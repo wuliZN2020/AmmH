@@ -202,35 +202,6 @@ def resnet18():
     return ResNet(BasicBlock, [2, 2, 2, 2], num_classes=2, include_top=True)
 
 
-def resnet50():
-    return ResNet(BottleNeck, [3, 4, 6, 3], num_classes=2, include_top=True)
-
-def resnet101():
-    return ResNet(BottleNeck, [3, 4, 23, 3], num_classes=2, include_top=True)
-
-if __name__ == '__main__':
-    from PIL import Image
-    import numpy as np
-    from torchvision import transforms
-    annotation_path_US = "datasets/datasets_US/train/0/liu-san-mei-17.jpg"
-    annotation_path_TH = "datasets/datasets_TH/train/0/liu-san-mei.png"
-    image_US = Image.open(annotation_path_US)
-    image_TH = Image.open(annotation_path_US)
-    trans = transforms.Compose([transforms.Resize(256),
-                                transforms.CenterCrop(224),
-                                transforms.ToTensor(),
-                                transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])])
-    image_US = trans(image_US)
-    image_TH = trans(image_TH)
-    # image_US = torch.from_numpy(np.transpose(np.array(image_US).astype(np.float32), [2, 0, 1]))
-    image_US = torch.unsqueeze(image_US,dim=0)
-    image_TH = torch.unsqueeze(image_TH,dim=0)
-
-    print(image_US.shape)
-
-    model = ResNet(BasicBlock, [2, 2, 2, 2], num_classes=2, include_top=True)
-    print(model)
-    print(model(image_US))
 
 
 
