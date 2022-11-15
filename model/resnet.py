@@ -3,9 +3,7 @@
 1、ResNet18作为BackBone：提取局部特征
 2、IntraTransformer作为模态内编码器：提取模态内全局特征
 3、InterTransformer作为模态间编码器：提取模态间全局特征
-IDEA： TODO：可以尝试在Transformer之后再加上注意力机制对不同模态赋予不同权重
 
-## TODO:所有的基础模块中都没有进行权重初始化
 """
 from xml.etree.ElementInclude import include
 import torch.nn as nn
